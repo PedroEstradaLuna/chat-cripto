@@ -1,5 +1,5 @@
 {
-  "name": "live-chat",
+  "name": "cripto-chat",
   "private": true,
   "scripts": {
     "start": "meteor run"
