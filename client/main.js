@@ -47,7 +47,7 @@ Template.body.helpers({
     let _messages=Messages.find({}, { sort: { createdAt: 1 } }).fetch();
     const key=Cookie.get("currentKey");
     for(let i=0;i<_messages.length;i++){
-      _messages[i].message=decrypt(_messages[i].message,key);
+      _messages[i].message=decrypt(Array.from(_messages[i].message),Array.from(key),Array.from('Kennwort')).join('');
     }
     console.log(_messages);
     return _messages; //most recent at the bottom
@@ -72,7 +72,7 @@ Template.body.events({
     const $el = $(event.currentTarget);
     const $input = $el.find('.message-input');
     const key=Cookie.get("currentKey");
-    let encrypted_message=encrypt($input.val(),key)
+    let encrypted_message=encrypt(Array.from($input.val()),Array.from(key),Array.from('Kennwort')).join('')
     const data = { message: $input.val() };
     const userName = Cookie.get("name");
 
